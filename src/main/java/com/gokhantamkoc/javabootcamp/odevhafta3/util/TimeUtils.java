@@ -21,5 +21,7 @@ public class TimeUtils {
 
 	public static Date convertToDate(long millis) {
 		// Bu metodu doldurmanizi bekliyoruz.
+		Date date = new Date(millis);	//csv dosyasındaki unix sütunundaki veriyi tarih formatına /								çevirir
+		return date;
 	}
 }
