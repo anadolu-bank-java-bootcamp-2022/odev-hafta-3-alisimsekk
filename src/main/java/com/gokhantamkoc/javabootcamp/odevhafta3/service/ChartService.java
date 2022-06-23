@@ -21,28 +21,14 @@ public class ChartService {
 		// Bu metodu doldurmanizi bekliyoruz.
 		CandleStickChart candleStickChart = new CandleStickChart("BTC/USDT Chart");
 		List<Candle> candles = new ArrayList<>();
-
-System.out.println("1");
-
-
 		try {
-
-System.out.println("2");
-
-
-			candles = this.cryptoDataCSVRepository.readCSV("Binance_BTCUSDT_d.csv");
-
-			System.out.println("3");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			candles = this.cryptoDataCSVRepository.readCSV("Binance_BTCUSDT_d.csv");		//mumların değerleri csv den okunur
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
-
+			
 		for( Candle candle : candles){
-			candleStickChart.addCandle(candle.getTime(), candle.getOpen(), candle.getHigh(), candle.getLow(), candle.getClose(),candle.getVolume());
+			candleStickChart.addCandle(candle.getTime(), candle.getOpen(), candle.getHigh(), candle.getLow(), candle.getClose(),candle.getVolume());      //mumların değerleri grafiğe çizilmek üzere candlestickchart nesneleri oluşturulur.
 		}
 
 		return candleStickChart;
